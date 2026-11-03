@@ -74,4 +74,5 @@ export function CharacterCounter({
       )}
     </div>
   </section>
-);
+  );
+}
