@@ -30,16 +30,17 @@ export function CharacterCounter({
     : 0;
 
   return (
-    <div>
-      <h2>Character Counter</h2>
+  <section className="character-counter">
+    <h2>Character Counter</h2>
 
-      <TextInput
-        onTextChange={handleTextChange}
-        placeholder="Start writing here..."
-      />
+    <TextInput
+      onTextChange={handleTextChange}
+      placeholder="Start writing here..."
+    />
 
-      <StatsDisplay stats={stats} />
+    <StatsDisplay stats={stats} />
 
+    <div className="writing-goals">
       <h3>Writing Goals</h3>
 
       <p>Minimum words: {minWords}</p>
@@ -48,15 +49,29 @@ export function CharacterCounter({
 
       <p>Word count progress: {progress.toFixed(0)}%</p>
 
-      <progress value={progress} max={100} />
+      <progress
+        className="word-progress"
+        value={progress}
+        max={100}
+      />
 
       {wordCount < minWords && (
-        <p>Keep writing to reach your minimum word count.</p>
+        <p className="goal-message">
+          Keep writing to reach your minimum word count.
+        </p>
+      )}
+
+      {wordCount >= minWords && wordCount <= maxWords && (
+        <p className="goal-success">
+          You've reached your minimum word count!
+        </p>
       )}
 
       {wordCount > maxWords && (
-        <p>You have exceeded the maximum word count.</p>
+        <p className="goal-warning">
+          You have exceeded the maximum word count.
+        </p>
       )}
     </div>
-  );
-}
+  </section>
+);
