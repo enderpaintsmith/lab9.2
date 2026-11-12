@@ -1,3 +1,4 @@
+
 import type { StatsDisplayProps } from "../../types";
 
 export function StatsDisplay({
@@ -17,6 +18,7 @@ export function StatsDisplay({
           Words: {stats.wordCount}
         </p>
 
+        {/* Displays reading time only when the optional prop is enabled. */}
         {showReadingTime && (
           <p className="stat-item">
             Estimated Reading Time: {stats.readingTime.toFixed(2)} minutes

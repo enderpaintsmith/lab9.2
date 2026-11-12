@@ -9,6 +9,7 @@ export function TextInput({
 }: TextInputProps) {
     const [text, setText] = useState<string>(initialValue);
 
+    // Updates the text state and sends the new value to the parent component.
     function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
         const newText = event.target.value;
 
