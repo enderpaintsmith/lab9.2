@@ -11,6 +11,7 @@ export function CharacterCounter({
 }: CharacterCounterProps) {
   const [text, setText] = useState<string>("");
 
+  // Keeps the callback function stable between renders.
   // Updates the text when the TextInput component sends a new value.
   const handleTextChange = useCallback((newText: string) => {
     setText(newText);
@@ -18,6 +19,7 @@ export function CharacterCounter({
 
   // Counts words by separating text at spaces, tabs, or line breaks.
   // Empty input returns zero instead of counting an empty word.
+  // Calculate the number of words in that text.
   const wordCount = text.trim()
     ? text.trim().split(/\s+/).length
     : 0;
@@ -30,9 +32,12 @@ export function CharacterCounter({
   };
 
   // Calculates progress toward the maximum word count, capped at 100%.
-  const progress = maxWords > 0
-    ? Math.min((wordCount / maxWords) * 100, 100)
-    : 0;
+let progress = 0;
+
+if (maxWords > 0) {
+  const percentage = (wordCount / maxWords) * 100;
+  progress = Math.min(percentage, 100);
+}
 
   return (
     <section className="character-counter">

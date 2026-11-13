@@ -5,7 +5,7 @@ import { CharacterCounter } from "./components/CharacterCounter/CharacterCounter
 function App() {
   return (
     <main>
-      <h1>Lab 9.2: Props and State</h1>
+      <h1>Lab 9.2: State &amp; Events</h1>
 
       <CharacterCounter
         minWords={50}
